@@ -6,6 +6,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name:    "Run Docker build"
           command: "docker build ./env -t kuklinistvan/qemu_spice_el9_builder:latest"
