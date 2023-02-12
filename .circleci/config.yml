@@ -24,8 +24,8 @@ jobs:
           name:    "Build capstone"
           command: "bash jobs/port_capstone_devel/build.sh"
       - store_artifacts:
-        - ~/rpmbuild/RPMS/
-        - ~/rpmbuild/SRPMS/
+        - rpmbuild/RPMS/
+        - rpmbuild/SRPMS/
         
   
 workflows:
