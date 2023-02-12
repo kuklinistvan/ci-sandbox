@@ -19,6 +19,8 @@ jobs:
           command: "echo Hello, World!"
   produce-artifact:
     working_directory: /tmp
+    docker:
+      - image: cimg/base:stable
     steps:
       - run:
           name: Creating Dummy Artifacts
