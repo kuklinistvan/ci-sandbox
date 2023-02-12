@@ -8,8 +8,7 @@ jobs:
       - checkout
       - run:
           name:    "Run Docker build"
-          command: "docker build ./env -t kuklinistvan
-          /qemu_spice_el9_builder:latest"
+          command: "docker build ./env -t kuklinistvan/qemu_spice_el9_builder:latest"
       - run:
           name:    "Push to repository"
           command: "docker login --username=kuklinistvan --password=$MY_DOCKER_API_TOKEN docker.io && docker push kuklinistvan/qemu_spice_el9_builder:latest"
