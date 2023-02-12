@@ -13,7 +13,7 @@ jobs:
       - run:
           name:    "Push to repository"
           command: "docker login --username=kuklinistvan --password=$MY_DOCKER_API_TOKEN docker.io && docker push kuklinistvan
-          /qemu_spice_el9_builder:latest"
+          qemu_spice_el9_builder:latest"
 
   build-capstone:
     docker:
@@ -30,7 +30,7 @@ jobs:
         
   
 workflows:
-  say-hello-workflow:
+  all:
     jobs:
       - build-builder-image
       - build-capstone
