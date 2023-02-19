@@ -9,10 +9,10 @@ jobs:
       - setup_remote_docker
       - run:
           name:    "Run Docker build"
-          command: "docker build ./env -t kuklinistvan/qemu_spice_el9_builder:latest"
+          command: "should_not_rebuild.py builder-image || docker build ./env -t kuklinistvan/qemu_spice_el9_builder:latest"
       - run:
           name:    "Push to repository"
-          command: "docker login --username=kuklinistvan --password=$MY_DOCKER_API_TOKEN docker.io && docker push kuklinistvan/qemu_spice_el9_builder:latest"
+          command: "should_not_rebuild.py builder-image || docker login --username=kuklinistvan --password=$MY_DOCKER_API_TOKEN docker.io && docker push kuklinistvan/qemu_spice_el9_builder:latest"
 
   build-capstone:
     docker:
@@ -23,9 +23,9 @@ jobs:
           name:    "Build capstone"
           command: "bash jobs/port_capstone_devel/build.sh"
       - store_artifacts:
-          path: rpmbuild/RPMS/
+          path: /root/rpmbuild/RPMS/
       - store_artifacts:
-          path: rpmbuild/SRPMS/
+          path: /root/rpmbuild/SRPMS/
         
   
 workflows:
