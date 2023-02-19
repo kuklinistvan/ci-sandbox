@@ -9,10 +9,10 @@ jobs:
       - setup_remote_docker
       - run:
           name:    "Run Docker build"
-          command: "should_not_rebuild.py builder-image || docker build ./env -t kuklinistvan/qemu_spice_el9_builder:latest"
+          command: "./should_not_rebuild.py builder-image || docker build ./env -t kuklinistvan/qemu_spice_el9_builder:latest"
       - run:
           name:    "Push to repository"
-          command: "should_not_rebuild.py builder-image || docker login --username=kuklinistvan --password=$MY_DOCKER_API_TOKEN docker.io && docker push kuklinistvan/qemu_spice_el9_builder:latest"
+          command: "./should_not_rebuild.py builder-image || docker login --username=kuklinistvan --password=$MY_DOCKER_API_TOKEN docker.io && docker push kuklinistvan/qemu_spice_el9_builder:latest"
 
   build-capstone:
     docker:
